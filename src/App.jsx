@@ -1,21 +1,39 @@
-import { Route, Routes } from 'react-router-dom'
-import Login from './pages/Login'
-import Home from './pages/Home'
-import Navbar from './components/Navbar'
-import Signup from './pages/Signup'
+import { Route, Routes } from 'react-router-dom';
+import Login from './pages/Login';
+import Home from './pages/Home';
+import Navbar from './components/Navbar';
+import Signup from './pages/Signup';
+import { Box, VStack } from '@chakra-ui/react';
+import Dashboard from './pages/Dashboard';
+import Profile from './components/Profile';
+import ApplicationStatus from './components/ApplicationStatus';
 
 function App() {
-
-  return (
-    <>
-      <Navbar />
-      <Routes>
-        <Route path='/' element={<Home />} />
-        <Route path='/login' element={<Login />} />
-        <Route path='/signup' element={<Signup />} />
-      </Routes>
-    </>
-  )
+	return (
+		<>
+			<VStack
+				align={'start'}
+				w={'100vw'}
+				h={'100vh'}
+				gap={0}
+				overflowY={'hidden'}
+			>
+				<Navbar />
+				<Box w={'100%'} overflowY={'auto'} h={'100%'}>
+					<Routes>
+						<Route path="/" element={<Home />} />
+						<Route path="/login" element={<Login />} />
+						<Route path="/signup" element={<Signup />} />
+						<Route path="/dashboard" element={<Dashboard />}>
+							<Route path="profile" element={<Profile />} />
+							<Route path="application-status" element={<ApplicationStatus />} />
+							<Route path="enrolled-course" element={<Profile />} />
+						</Route>
+					</Routes>
+				</Box>
+			</VStack>
+		</>
+	);
 }
 
-export default App
+export default App;

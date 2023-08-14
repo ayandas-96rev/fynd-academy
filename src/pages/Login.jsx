@@ -18,7 +18,7 @@ import LoginBanner from '../assets/login-banner.png';
 
 const Login = () => {
 	return (
-		<HStack justify={'center'} pt={'8'}>
+		<HStack justify={'center'} pt={'8'} w={'100%'}>
 			<HStack
 				maxW={{xl: '6xl', lg: '4xl'}}
 				w={'100%'}

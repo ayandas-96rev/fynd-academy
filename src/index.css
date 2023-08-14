@@ -6,3 +6,13 @@
   box-sizing: border-box;
   font-family: 'Inter', sans-serif;
 }
+
+::-webkit-scrollbar {
+  width: 7px;
+  height: 7px;
+}
+
+::-webkit-scrollbar-thumb {
+  background: #00000044;
+  border-radius: 10px;
+}

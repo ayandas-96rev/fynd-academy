@@ -2,7 +2,7 @@ import { Box, HStack, Hide, Image, Show, Text } from '@chakra-ui/react';
 import { Link, useLocation } from 'react-router-dom';
 import { useEffect, useState } from 'react';
 
-import img from '../assets/fynd_logo.png';
+import img from '../assets/fynd_logo1.png';
 import UserProfileButton from './UserProfileButton';
 import ApplyButton from './ApplyButton';
 import AppDrawer from './AppDrawer';
@@ -21,11 +21,12 @@ const Navbar = () => {
 	return (
 		<Box
 			p={isLoginPage ? 5 : 0}
-			pb="5"
+			w={'100%'}
 			mt={isLoginPage ? 6 : 0}
 			position={'relative'}
 			transition={'0.25s'}
 			fontSize={'md'}
+			boxShadow={'0 3px 14px 14px #fff'}
 		>
 			<HStack
 				justify={{ xl: 'space-between', base: 'end' }}
@@ -96,10 +97,10 @@ const Navbar = () => {
 				<Image
 					src={img}
 					transition={'0.25s'}
-					background={'white'}
 					alt="Brand Icon"
 					w={isLoginPage ? '94px' : '85px'}
 					position={'absolute'}
+					zIndex={2}
 					top={isLoginPage ? '-2px' : '3px'}
 					left={{ xl: '50%', base: '10px' }}
 					transform={{

@@ -1,86 +1,65 @@
-import { Box, Button, HStack, Text, VStack } from '@chakra-ui/react';
-import { Link, Outlet, useLocation } from 'react-router-dom';
+import { Box, Stack } from '@chakra-ui/react';
+import { Outlet } from 'react-router-dom';
 
-import {BiUserCheck} from 'react-icons/bi';
-import {SlGraph} from 'react-icons/sl';
-import {HiOutlinePuzzle} from 'react-icons/hi';
-import { useEffect, useState } from 'react';
+import { BiUserCheck } from 'react-icons/bi';
+import { SlGraph } from 'react-icons/sl';
+import { HiOutlinePuzzle } from 'react-icons/hi';
+import DashboardButton from '../components/DashboardButton';
+import { BsCheckCircle } from 'react-icons/bs';
 
 const Dashboard = () => {
-    const loc= useLocation();
-    const [location, setLocation] = useState("");
-
-    useEffect(()=>{
-        setLocation(loc.pathname);
-    }, [loc])
-
 	return (
-		<HStack w={'100%'} h={'100%'} align={'top'}>
-			<VStack
-				w={['250px', '300px', '400px']}
-				h={'100%'}
+		<Stack
+			w={'100%'}
+			h={'100%'}
+			align={'top'}
+			direction={{ base: 'column-reverse', md: 'row' }}
+			gap={0}
+		>
+			<Stack
+				direction={{ base: 'row', md: 'column' }}
+				w={{ md: '250px', lg: '300px', xl: '400px', base: '100vw' }}
+				h={{ md: '100%', base: 'fit-content' }}
 				bg={'brand.600'}
 				pos={'relative'}
 				zIndex={1}
 				color={'white'}
-				p={7}
-				pt={'50px'}
-                gap={5}
+				p={{ base: 4, sm: 5, md: 7 }}
+				pt={{ md: '50px' }}
+				gap={{ base: 4, sm: 5 }}
 			>
-				<Button
-					as={Link}
-                    to={'/dashboard/profile'}
-					w={'100%'}
-                    border={'1px solid #ffffff11'}
-					bg={location=='/dashboard/profile'?'gray.400':'transparent'}
-					color={location=='/dashboard/profile'?'gray.800':'gray.500'}
-                    _hover={{bg: location=='/dashboard/profile'?'gray.400':'#ffffff11'}}
-                    justifyContent={'start'}
-				>
-                        
-                    <HStack>
-                        <BiUserCheck size={'21px'}/>
-                        <Text>Your Profile</Text>
-                    </HStack>
-					
-				</Button>
-				<Button
-					as={Link}
-                    to={'/dashboard/application-status'}
-					w={'100%'}
-                    border={'1px solid #ffffff11'}
-					bg={location=='/dashboard/application-status'?'gray.400':'transparent'}
-					color={location=='/dashboard/application-status'?'gray.800':'gray.500'}
-                    _hover={{bg: location=='/dashboard/application-status'?'gray.400':'#ffffff11'}}
-                    justifyContent={'start'}
-				>
-                    <HStack>
-                        <SlGraph size={'18px'}/>
-                        <Text>Application Status</Text>
-                    </HStack>
-					
-				</Button>
-				<Button
-					as={Link}
-                    to={'/dashboard/enrolled-course'}
-					w={'100%'}
-                    border={'1px solid #ffffff11'}
-					bg={location=='/dashboard/enrolled-course'?'gray.400':'transparent'}
-					color={location=='/dashboard/enrolled-course'?'gray.800':'gray.500'}
-                    _hover={{bg: location=='/dashboard/enrolled-course'?'gray.400':'#ffffff11'}}
-                    justifyContent={'start'}
-				>
-                    <HStack>
-                        <HiOutlinePuzzle size={'18px'}/>
-                        <Text>Enrolled Course</Text>
-                    </HStack>
-				</Button>
-			</VStack>
+				<DashboardButton
+					text={'Your Profile'}
+					to={'/dashboard/profile'}
+					icon={<BiUserCheck size={'21px'} />}
+				></DashboardButton>
+				<DashboardButton
+					text={'Application Status'}
+					to={'/dashboard/application-status'}
+					icon={<SlGraph size={'18px'} />}
+				></DashboardButton>
+				<DashboardButton
+					text={'Enrolled Course'}
+					to={'/dashboard/enrolled-course'}
+					icon={<HiOutlinePuzzle size={'18px'} />}
+				></DashboardButton>
+				<DashboardButton
+					text={'Enrollments'}
+					to={'/dashboard/enrollments'}
+					icon={<BsCheckCircle size={'17px'} />}
+				></DashboardButton>
+			</Stack>
 
-            <Box w={'100%'} h={'100%'} overflowY={'auto'} p={[4, 6, 10]} pt={[6, 10, 10]}>
-                <Outlet />
-            </Box>
-		</HStack>
+			<Box
+				w={'100%'}
+				h={'100%'}
+				overflowY={'auto'}
+				p={[4, 6, 10]}
+				pt={[6, 10, 10]}
+			>
+				<Outlet />
+			</Box>
+		</Stack>
 	);
 };
 

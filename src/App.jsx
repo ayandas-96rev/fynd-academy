@@ -7,6 +7,8 @@ import { Box, VStack } from '@chakra-ui/react';
 import Dashboard from './pages/Dashboard';
 import Profile from './components/Profile';
 import ApplicationStatus from './components/ApplicationStatus';
+import EnrolledCourse from './components/EnrolledCourse';
+import Enrollments from './components/Admin/Enrollments';
 
 function App() {
 	return (
@@ -27,7 +29,8 @@ function App() {
 						<Route path="/dashboard" element={<Dashboard />}>
 							<Route path="profile" element={<Profile />} />
 							<Route path="application-status" element={<ApplicationStatus />} />
-							<Route path="enrolled-course" element={<Profile />} />
+							<Route path="enrolled-course" element={<EnrolledCourse />} />
+							<Route path="enrollments" element={<Enrollments />} />
 						</Route>
 					</Routes>
 				</Box>

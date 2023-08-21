@@ -23,7 +23,7 @@ const Education = () => {
                 m={'auto'}
 				align={'center'}
 				gap={5}
-                mb={'100px'} 
+                mb={'10vh'} 
 			>
 				<VStack align={'start'} fontWeight={'600'} gap={1}>
 					<Text pl={2}>University/College</Text>

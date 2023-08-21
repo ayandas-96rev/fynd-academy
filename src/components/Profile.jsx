@@ -2,6 +2,7 @@ import {
 	Box,
 	Button,
 	HStack,
+	Show,
 	Stack,
 	Step,
 	StepIcon,
@@ -27,7 +28,7 @@ const Profile = () => {
 	const toast = useToast();
 
 	const incrementStep = () => {
-    if(stepIndex<2)
+    if(stepIndex<3)
       setStepIndex((step) => step + 1);
 	};
 	const decrementStep = () => {
@@ -46,12 +47,12 @@ const Profile = () => {
 	};
 
 	return (
-		<Stack minW={'lg'} direction={'column'} w={'100%'} h={'100%'}>
+		<Stack direction={'column'} w={'100%'}>
 			<Stepper
 				index={stepIndex}
 				border={'3px solid'}
 				borderColor={'brand.300'}
-				p={5}
+				p={[3,5,5]}
 				borderRadius={10}
 				colorScheme="brand"
 			>
@@ -64,9 +65,11 @@ const Profile = () => {
 								active={<StepNumber />}
 							/>
 						</StepIndicator>
-						<Box flexShrink="0">
-							<StepTitle>{step}</StepTitle>
-						</Box>
+						<Show above='sm'>
+							<Box flexShrink="0">
+								<StepTitle>{step}</StepTitle>
+							</Box>
+						</Show>
 						<StepSeparator />
 					</Step>
 				))}
@@ -74,14 +77,14 @@ const Profile = () => {
 
 			{stepIndex == 0 && <BasicInfo />}
 			{stepIndex == 1 && <Education />}
-			{stepIndex == 2 && <Experience />}
+			{(stepIndex == 2 || stepIndex == 3) && <Experience />}
 
 			<HStack
 				justify={'space-between'}
 				fontWeight={'600'}
 				w={'100%'}
 				gap={1}
-				py={10}
+				py={{md: 10, base: 5}}
 			>
 				<HStack>
 					<Button

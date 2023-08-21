@@ -38,7 +38,7 @@ const Navbar = () => {
 				borderColor={isLoginPage ? 'brand.800' : 'brand.200'}
 				p={5}
 				px={8}
-				h={isLoginPage ? '80px' : '94px'}
+				h={{md: isLoginPage ? '80px' : '94px', base: '80px'}}
 				maxW={isLoginPage ? '6xl' : '100vw'}
 				margin={'auto'}
 				borderRadius={isLoginPage ? '3xl' : '0'}
@@ -98,7 +98,7 @@ const Navbar = () => {
 					src={img}
 					transition={'0.25s'}
 					alt="Brand Icon"
-					w={isLoginPage ? '94px' : '85px'}
+					w={{md: isLoginPage ? '94px' : '85px', base: isLoginPage ? '94px' : '72px'}}
 					position={'absolute'}
 					zIndex={2}
 					top={isLoginPage ? '-2px' : '3px'}
